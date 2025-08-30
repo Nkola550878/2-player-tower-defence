@@ -33,7 +33,7 @@ public class Builder : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector3.forward * 20f);
         foreach (Transform buildingPlace in transform.GetChild(0))
         {
-            if (hit.collider != null && hit.collider.transform == buildingPlace)
+            if (hit.collider != null && hit.collider.transform == buildingPlace && buildingPlace.GetComponent<BuildingPlace>() != null)
             {
                 if (shop.CanBuy(buildings[index].GetComponent<Building>().price))
                 {

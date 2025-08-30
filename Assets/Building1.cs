@@ -24,7 +24,6 @@ public class Building1 : Building
         {
             if(gameManager.player1Manager.transform.GetChild(2).GetChild(0) == transform.parent)
             {
-                Debug.Log("a");
                 enemyParent = gameManager.player2Manager.transform.GetChild(3);
                 return;
             }
@@ -59,9 +58,8 @@ public class Building1 : Building
         {
             RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector3.forward * 20f);
 
-            if (hit.collider.transform == transform)
+            if (hit && hit.collider.transform == transform)
             {
-                Debug.Log("a");
                 GameObject instance = Instantiate(buildingUI, transform.position, Quaternion.identity, transform);
                 instance.GetComponent<Canvas>().worldCamera = cam;
                 instance.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(Upgrade);
@@ -77,6 +75,7 @@ public class Building1 : Building
 
     void Delete()
     {
+        transform.parent.parent.parent.GetChild(0).GetComponent<Shop>().money += 40;
         Instantiate(buildingPlace, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }
