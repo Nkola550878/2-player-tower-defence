@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 879692986500842103}
   - component: {fileID: -4985688725962437357}
   - component: {fileID: 1422653300882602923}
+  - component: {fileID: 3168859852226628000}
   m_Layer: 0
   m_Name: Building1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,14 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbd229f19f2d4d4fb321c54677bb4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 50
-  enemyParent: {fileID: 0}
-  currentEnemy: {fileID: 0}
   bullet: {fileID: 1936685404316843550, guid: fe7d9a23e3f10804685966150e065d86, type: 3}
   buildingRadius: 3
   timeBetweenBullets: 0.2
-  buildingUI: {fileID: 6015624593456006026, guid: 8cb45699a0938f9469c8a3c021b62356, type: 3}
-  buildingPlace: {fileID: 3123143926623612985, guid: 3fe52c18e250f1443844d0b3707c05b9, type: 3}
 --- !u!61 &1422653300882602923
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,3 +147,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3168859852226628000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454509042141983761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25128fbc52c08234baa589e838d46430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 50
+  health: 20
+  buildingUI: {fileID: 6015624593456006026, guid: 8cb45699a0938f9469c8a3c021b62356, type: 3}
+  buildingPlace: {fileID: 3123143926623612985, guid: 3fe52c18e250f1443844d0b3707c05b9, type: 3}
+  enemyParent: {fileID: 0}
+  currentEnemy: {fileID: 0}

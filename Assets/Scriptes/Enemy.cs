@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     Vector3[] postions;
     Rigidbody2D rigidbody2D;
     int nextPositionIndex = 0;
+    public bool moving = true;
 
     void Start()
     {
@@ -30,7 +31,10 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody2D.MovePosition(Vector3.MoveTowards(transform.position, postions[nextPositionIndex], speed * Time.fixedDeltaTime));
+        if (moving)
+        {
+            rigidbody2D.MovePosition(Vector3.MoveTowards(transform.position, postions[nextPositionIndex], speed * Time.fixedDeltaTime));
+        }
     }
 
     void Update()
@@ -57,7 +61,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if(health < 0)

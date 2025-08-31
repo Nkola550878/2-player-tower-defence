@@ -1,59 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Building1 : Building
+public class Building : MonoBehaviour
 {
-    [SerializeField] GameObject bullet;
-    [SerializeField] float buildingRadius = 3f;
-    [SerializeField] float timeBetweenBullets;
+    public int price;
+
+    [SerializeField] float health;
     [SerializeField] GameObject buildingUI;
     [SerializeField] GameObject buildingPlace;
 
-    GameManager gameManager;
+    public Transform enemyParent;
+
+    public Transform currentEnemy;
     float timeToNexBullet;
     Camera cam;
+    GameManager gameManager;
 
-    void Start()
+    private void Start()
     {
         cam = FindObjectOfType<Camera>();
         gameManager = FindObjectOfType<GameManager>();
 
-        if(enemyParent == null)
+        if (enemyParent == null)
         {
-            if(gameManager.player1Manager.transform.GetChild(2).GetChild(0) == transform.parent)
+            if (gameManager.player1Manager.transform.GetChild(2).GetChild(0) == transform.parent)
             {
                 enemyParent = gameManager.player2Manager.transform.GetChild(3);
                 return;
             }
             enemyParent = gameManager.player1Manager.transform.GetChild(3);
-            
+
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        CheckEnemy(buildingRadius);
-        if(currentEnemy == null)
-        {
-            FindEnemy(buildingRadius);
-        }
-
-        timeToNexBullet -= Time.deltaTime;
-
-        if (timeToNexBullet < 0f)
-        {
-            if (currentEnemy != null)
-            {
-                GameObject lastBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                lastBullet.GetComponent<Bullet>().direction = transform.position - currentEnemy.position;
-                lastBullet.GetComponent<Bullet>().radius = buildingRadius;
-            }
-            timeToNexBullet = timeBetweenBullets;
-        }
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector3.forward * 20f);
@@ -78,5 +62,36 @@ public class Building1 : Building
         transform.parent.parent.parent.GetChild(0).GetComponent<Shop>().money += 40;
         Instantiate(buildingPlace, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
+    }
+
+    public void CheckEnemy(float radius)
+    {
+        if (currentEnemy == null || (transform.position - currentEnemy.position).sqrMagnitude > radius * radius)
+        {
+            currentEnemy = null;
+        }
+    }
+
+    public void FindEnemy(float radius)
+    {
+        foreach (Transform enemy in enemyParent)
+        {
+            if ((transform.position - enemy.position).sqrMagnitude < radius * radius)
+            {
+                currentEnemy = enemy;
+                return;
+            }
+        }
+        currentEnemy = null;
+    }
+
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Delete();
+        }
     }
 }

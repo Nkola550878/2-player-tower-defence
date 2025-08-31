@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public float radius;
     public float damage;
 
+    [SerializeField] bool justDamage;
     [HideInInspector] public Vector3 direction;
 
     void Start()
@@ -23,9 +24,16 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.GetComponent<Enemy>() != null)
+        if (justDamage)
         {
-            Destroy(gameObject);
+            if(collision.collider.GetComponent<Enemy>() != null)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            GetComponent<Bomb>().Explode();
         }
     }
 }
