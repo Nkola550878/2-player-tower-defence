@@ -17,11 +17,13 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigidbody2D;
     int nextPositionIndex = 0;
     public bool moving = true;
+    MainTower mainTower;
 
     void Start()
     {
         postions = new Vector3[locationParent.childCount];
         rigidbody2D = GetComponent<Rigidbody2D>();
+        mainTower = transform.parent.parent.GetChild(4).GetComponent<MainTower>();
 
         for (int i = 0; i < locationParent.childCount; i++)
         {
@@ -49,6 +51,7 @@ public class Enemy : MonoBehaviour
         if(nextPositionIndex == postions.Count())
         {
             Destroy(gameObject);
+            mainTower.Hit();
         }
         
     }

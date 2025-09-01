@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +20,12 @@ public class GameManager : MonoBehaviour
     Shop[] shop;
     float timeToNextWave;
     public static bool started;
+
+    private void Start()
+    {
+        shop = FindObjectsOfType<Shop>();
+        Time.timeScale = 1f;
+    }
 
     void StartWave()
     {
@@ -54,5 +61,10 @@ public class GameManager : MonoBehaviour
             timeText1.text = timeToNextWave.ToString("0.00");
             timeText2.text = timeToNextWave.ToString("0.00");
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
