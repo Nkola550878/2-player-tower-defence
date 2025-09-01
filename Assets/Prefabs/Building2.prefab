@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1756106869864762917, guid: c77d1fe0891af094998eaf6f1bc95a63, type: 3}
   buildingRadius: 3
-  timeBetweenBullets: 5
+  timeBetweenBullets: 3
 --- !u!61 &191742824259683231
 BoxCollider2D:
   m_ObjectHideFlags: 0
