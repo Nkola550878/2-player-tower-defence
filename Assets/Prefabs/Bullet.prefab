@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   radius: 0
-  damage: 2
+  damage: 1
   justDamage: 1
   direction: {x: 0, y: 0, z: 0}
 --- !u!58 &7914924412110910075

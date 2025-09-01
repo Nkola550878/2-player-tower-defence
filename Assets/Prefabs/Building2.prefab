@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1756106869864762917, guid: c77d1fe0891af094998eaf6f1bc95a63, type: 3}
   buildingRadius: 3
-  timeBetweenBullets: 1.4
+  timeBetweenBullets: 5
 --- !u!61 &191742824259683231
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 150
-  health: 260
+  health: 100
   buildingUI: {fileID: 6015624593456006026, guid: 8cb45699a0938f9469c8a3c021b62356, type: 3}
   buildingPlace: {fileID: 3123143926623612985, guid: 3fe52c18e250f1443844d0b3707c05b9, type: 3}
   enemyParent: {fileID: 0}

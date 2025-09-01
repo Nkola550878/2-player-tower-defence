@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 50
-  health: 20
+  health: 50
   buildingUI: {fileID: 6015624593456006026, guid: 8cb45699a0938f9469c8a3c021b62356, type: 3}
   buildingPlace: {fileID: 3123143926623612985, guid: 3fe52c18e250f1443844d0b3707c05b9, type: 3}
   enemyParent: {fileID: 0}
